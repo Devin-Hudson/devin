@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from './screens/Home'
+import { CssBaseline } from '@material-ui/core'
+import { StylesProvider, ThemeProvider, jssPreset } from '@material-ui/core/styles'
+import { create } from 'jss'
+import rtl from 'jss-rtl'
+import theme from './assets/theme'
 
+const jss = create({plugins: [...jssPreset().plugins,rtl()]})
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ThemeProvider theme={theme}>
+          <StylesProvider jss={jss}>
+              <CssBaseline />
+              <Home />
+          </StylesProvider>
+      </ThemeProvider>
   );
 }
 
