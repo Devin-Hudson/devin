@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const currentLang = localStorage.getItem('currentLang') === null ? localStorage.setItem('currentLang', 'en') : localStorage.getItem('currentLang')
 
-document.getElementsByTagName('body')[0].setAttribute('dir','rtl')
+if (currentLang!=='en')
+	document.getElementsByTagName('body')[0].setAttribute('dir','rtl')
+
 ReactDOM.render(
     <App/>, document.getElementById('root')
 );

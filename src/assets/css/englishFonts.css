@@ -1,0 +1,8 @@
+/*monoton font*/
+@font-face {
+    font-family: monoton;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/ttf/Monoton-Regular.ttf');
+}
+

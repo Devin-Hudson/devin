@@ -1,0 +1,64 @@
+/*arhala font*/
+@font-face {
+    font-family: arhala;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/typography/AraHala.ttf');
+}
+/*shekasteh nastaliq font*/
+@font-face {
+    font-family: shekasteh;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/typography/Shekasteh.ttf');
+}
+/*vazir font*/
+@font-face {
+    font-family: vazir;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/eot/Vazir.eot');
+    src: url('../fonts/eot/Vazir.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+    url('../fonts/woff/Vazir.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../fonts/ttf/Vazir.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: vazir;
+    font-style: normal;
+    font-weight: 100;
+    src: url('../fonts/eot/Vazir-Thin.eot');
+    src: url('../fonts/eot/Vazir-Thin.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+    url('../fonts/woff/Vazir-Thin.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../fonts/ttf/Vazir-Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: vazir;
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/eot/Vazir-Light.eot');
+    src: url('../fonts/eot/Vazir-Light.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+    url('../fonts/woff/Vazir-Light.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../fonts/ttf/Vazir-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: vazir;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/eot/Vazir-Medium.eot');
+    src: url('../fonts/eot/Vazir-Medium.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+    url('../fonts/woff/Vazir-Medium.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../fonts/ttf/Vazir-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: vazir;
+    font-style: normal;
+    font-weight: 800;
+    src: url('../fonts/eot/Vazir-Bold.eot');
+    src: url('../fonts/eot/Vazir-Bold.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+    url('../fonts/woff/Vazir-Bold.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../fonts/ttf/Vazir-Bold.ttf') format('truetype');
+}
