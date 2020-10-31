@@ -8,14 +8,24 @@ import theme from './assets/theme'
 
 const jss = create({plugins: [...jssPreset().plugins,rtl()]})
 function App() {
-  return (
-      <ThemeProvider theme={theme}>
-          <StylesProvider jss={jss}>
-              <CssBaseline />
-              <Home />
-          </StylesProvider>
-      </ThemeProvider>
-  );
+    if(localStorage.getItem('currentLang')==='en'){
+        return (
+            <ThemeProvider theme={theme}>
+                    <CssBaseline />
+                    <Home />
+            </ThemeProvider>
+        );
+    }else{
+        return (
+            <ThemeProvider theme={theme}>
+                <StylesProvider jss={jss}>
+                    <CssBaseline />
+                    <Home />
+                </StylesProvider>
+            </ThemeProvider>
+        );
+    }
+
 }
 
 export default App;

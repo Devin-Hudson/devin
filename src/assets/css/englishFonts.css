@@ -1,8 +1,24 @@
-/*monoton font*/
+/*Monoton font*/
 @font-face {
-    font-family: monoton;
+    font-family: Monoton;
     font-style: normal;
     font-weight: normal;
     src: url('../fonts/ttf/Monoton-Regular.ttf');
 }
 
+/*JuliusSansOne-Regular font*/
+@font-face {
+    font-family: JuliusSansOne;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/ttf/JuliusSansOne-Regular.ttf');
+}
+
+/*AlegreyaSansSC-Black font*/
+
+@font-face {
+    font-family: AlegreyaSansSC;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/ttf/AlegreyaSansSC-Regular.ttf');
+}

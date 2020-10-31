@@ -5,8 +5,8 @@ import './css/otherFonts.css'
 import './css/englishFonts.css'
 //entry point in index.js
 const direction = localStorage.getItem('currentLang')==='en' ? 'ltr' : 'rtl'
-const defaultFont = localStorage.getItem('currentLang')==='en' ? 'monoton' : 'iranyekan'
-
+const defaultFont = localStorage.getItem('currentLang')==='en' ? 'AlegreyaSansSC' : 'iranyekan'
+const logoFont = localStorage.getItem('currentLang')==='en' ? 'Monoton' : 'iranyekan'
 const theme = createMuiTheme({
 	palette: palette,
 	direction: direction,
@@ -67,6 +67,13 @@ const theme = createMuiTheme({
 			lineHeight: 50,
 			fontFamily: defaultFont,
 			color: "#fff",
+			letterSpacing: 2
+		},
+		logo:{
+			fontWeight: 600,
+			fontSize: '3rem',
+			fontFamily: logoFont,
+			color: '#fff',
 			letterSpacing: 2
 		}
 	}

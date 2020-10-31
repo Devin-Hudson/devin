@@ -1,14 +1,14 @@
 import React, {Fragment, useState} from 'react'
 import {ReactSVG} from 'react-svg'
-import {useSpring, animated} from 'react-spring'
+import {useSpring, animated, config,useTrail} from 'react-spring'
 // import clsx from 'clsx'
 //material ui components
-import {createStyles, Grid, makeStyles, Typography, Box, IconButton, Button, Divider} from '@material-ui/core'
+import {createStyles, Grid, makeStyles, Typography, Box, IconButton, Button, Divider, duration} from '@material-ui/core'
 import {Card, CardMedia, CardActionArea, CardContent, CardActions, Collapse} from '@material-ui/core'
-import {Theme as theme} from '@material-ui/core/styles'
-import {Telegram, Email, Favorite, Share, ExpandMore} from '@material-ui/icons'
-import Eitaa from '../assets/Eitaa-Logo.svg'
-import Soroush from '../assets/Soroush-Logo.svg'
+// import {Theme as theme} from '@material-ui/core/styles'
+// import {Telegram, Email, Favorite, Share, ExpandMore} from '@material-ui/icons'
+// import Eitaa from '../assets/Eitaa-Logo.svg'
+// import Soroush from '../assets/Soroush-Logo.svg'
 //component
 import DrawerC from '../components/drawer'
 import AppbarC from '../components/appbar'
@@ -17,7 +17,7 @@ import PersianDatePicker from '../components/persianDatePicker'
 import background from '../assets/background.mp4'
 import logo from '../assets/logo.svg'
 import img from '../assets/images/AgEEPi3.jpg'
-
+//console.log(theme)
 const useBackgroundStyle = makeStyles((theme)=>createStyles({
 	root:{
 		width: '100%',
@@ -26,12 +26,19 @@ const useBackgroundStyle = makeStyles((theme)=>createStyles({
 	},
 	[theme.breakpoints.down('md')]:{
 		root:{
-			width: window.screen.width,
+			width: `${window.screen.width} - 30px`,
 			height: window.screen.height,
 			objectFit: 'cover',
 			objectPosition: '20% 0%',
-			overflowX: 'hidden'
-		}
+			overflowX: 'hidden',
+			overflowY: 'hidden'
+		},
+		heroLogo:{
+			width: `${window.screen.width} - 30px`,
+			height: '300px',
+			margin: '25px'
+		},
+
 	},
 	middleWrapper:{
 		display: 'flex',
@@ -43,13 +50,13 @@ const useBackgroundStyle = makeStyles((theme)=>createStyles({
 
 	},
 	heroLogo:{
-		width: '400px',
-		height: '200px',
-		margin: '25px'
+		width: '350px',
+		height: '300px',
+		margin: '0px'
 	},
 	heroText:{
-		color: '#EAEAEA',
-		textShadow: '1px 3px 6px rgba(206,182,0,0.96)'
+		color: '#aa2ac0',
+		fontWeight: 400
 	},
 	heroContact:{
 		marginTop: '15px',
@@ -85,18 +92,32 @@ const useCardStyle = makeStyles((theme)=>createStyles({
 }))
 
 export default function () {
-	//styles
-	const backgroundStyle = useBackgroundStyle()
-	const sectionStyle = useSectionStyle()
-	const cardStyle = useCardStyle()
-	const animationStyle = useSpring({opacity: 1,deley: 100, from: {opacity: 0.5}})
+	//consts
+	const xs = 12;
+	const md = 5;
+	const heroText = 'Shape What FUTURE Holds'.split(' ')
 	//states
 	const [drawerState, handleDrawerState] = useState(false)
 	const [datepickerState, handleDatepicker] = useState(false)
 	const [expanded, setExpanded] = useState(false)
-	//consts
-	const xs = 12;
-	const md = 5;
+	//styles and animation
+	const backgroundStyle = useBackgroundStyle()
+	const sectionStyle = useSectionStyle()
+	const cardStyle = useCardStyle()
+	const {o, xyz} = useSpring({
+		from:{o:0, xyz: [0,+100,0]},
+	 	o: 1,
+		xyz: [0,0,0],
+		delay: 1500
+	})
+	const heroTextTrail = useTrail(heroText.length,{
+		from:{o:0, xyz: [0,+100,0], height: 0},
+		o: 1,
+		xyz: [0,0,0],
+		height: 80,
+		delay: 2500
+	})
+
 	return(
 		<Fragment>
 			<AppbarC handleDrawerState={handleDrawerState} handleDatepicker={handleDatepicker} />
@@ -107,30 +128,49 @@ export default function () {
 				container
 				className={backgroundStyle.middleWrapper}>
 
-					<animated.img src={logo} alt='logo' className={backgroundStyle.heroLogo} style={animationStyle} />
+					<animated.img src={logo} alt='logo' className={backgroundStyle.heroLogo}
+								  style={{
+								  	opacity: o.interpolate((o)=>`${o}`),
+								  	transform: xyz.interpolate((x, y, z) => `translate3d(${x}px,${y}px,${z}px)`)
+										  }} />
+										  
+					<Typography component='h1' className={backgroundStyle.heroText}>
+						{heroTextTrail.map(({o, xyz, height}, currentIndex)=>(
+							<animated.span key={currentIndex}
+										   style={{
+											   height,
+											   opacity: o.interpolate((o)=>`${o}`),
+											   transform: xyz.interpolate((x, y, z) => `translate3d(${x}px,${y}px,${z}px)`),
+											   display: 'inline-block'
+										   }}>
 
-					<Typography className={backgroundStyle.heroText}>Shape What FUTURE Holds</Typography>
+									{`${heroText[currentIndex]} `}
 
-					<Grid className={backgroundStyle.heroContact}>
-						<IconButton style={{ color: '#f1b109'}}>
+							</animated.span>
+						))}
+					</Typography>
+										  
 
-						</IconButton>
-						<IconButton style={{ color: '#f1b109'}}>
-							<ReactSVG src={Soroush} />
-						</IconButton>
-						<IconButton style={{ color: '#f1b109'}}>
-							<Telegram />
-						</IconButton>
-						<IconButton style={{ color: '#f1b109'}}>
-							<Email  />
-						</IconButton>
-					</Grid>
+					{/*<Grid className={backgroundStyle.heroContact}>*/}
+					{/*	<IconButton style={{ color: '#f1b109'}}>*/}
+
+					{/*	</IconButton>*/}
+					{/*	<IconButton style={{ color: '#f1b109'}}>*/}
+					{/*		<ReactSVG src={Soroush} />*/}
+					{/*	</IconButton>*/}
+					{/*	<IconButton style={{ color: '#f1b109'}}>*/}
+					{/*		<Telegram />*/}
+					{/*	</IconButton>*/}
+					{/*	<IconButton style={{ color: '#f1b109'}}>*/}
+					{/*		<Email  />*/}
+					{/*	</IconButton>*/}
+					{/*</Grid>*/}
 			</Grid>
 			{/*section*/}
 			<Grid container className={sectionStyle.root}>
 				<Grid item xs={xs} md={md} className={sectionStyle.card} style={{position: 'sticky'}}>
-					<Typography component='li' style={{color: 'black'}}>
-						خدماتی که در این دفتر ارائه می شود
+					<Typography component='h2' style={{color: 'black'}}>
+						Title Provided by the Admin
 					</Typography>
 				</Grid>
 				<Grid item xs={xs} md={md} className={sectionStyle.card}>
