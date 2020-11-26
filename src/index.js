@@ -5,11 +5,11 @@ import * as serviceWorker from './serviceWorker';
 
 const currentLang = localStorage.getItem('currentLang') === null ? localStorage.setItem('currentLang', 'en') : localStorage.getItem('currentLang')
 
-if (currentLang!=='en')
-	document.getElementsByTagName('body')[0].setAttribute('dir','rtl')
+if (currentLang !== 'en')
+	document.getElementsByTagName('body')[0].setAttribute('dir', 'rtl')
 
 ReactDOM.render(
-    <App/>, document.getElementById('root')
+	<App/>, document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
