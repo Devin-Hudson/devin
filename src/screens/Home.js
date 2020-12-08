@@ -1,21 +1,23 @@
 import React, {Fragment, useState} from 'react'
-import DrawerComponent from '../components/drawer'
-import AppbarComponent from '../components/appbar'
+import DrawerComponent from '../components/CustomizedDrawer'
+import AppbarComponent from '../components/CustomizedAppbar'
 import SectionA from '../components/SectionA'
 import SectionB from '../components/SectionB'
-// import PersianDatePicker from '../components/persianDatePicker'
+import PersianDatePicker from '../components/PersianDatePicker'
+import ReachOut from '../components/ReachOut'
 
 export default function () {
 	const [drawerState, handleDrawerState] = useState(false)
-	const [datepickerState, handleDatepicker] = useState(false)
-	const [expanded, setExpanded] = useState(false)
+	// const [datePickerState, handleDatePicker] = useState(false)
 	return (
 		<Fragment>
-			<AppbarComponent handleDrawerState={handleDrawerState} handleDatepicker={handleDatepicker}/>
+			<AppbarComponent states={[drawerState, handleDrawerState]} />
 			<SectionA/>
 			<SectionB/>
-			{/*<PersianDatePicker state={datepickerState} handleDatepicker={handleDatepicker}/>*/}
-			<DrawerComponent state={drawerState} handleDrawerState={handleDrawerState}/>
+			<ReachOut/>
+			{/*<PersianDatePicker/>*/}
+			{/*state={datepickerState} handleDatepicker={handleDatepicker}/>*/}
+			<DrawerComponent states={[drawerState, handleDrawerState]}/>
 		</Fragment>
 	)
 }

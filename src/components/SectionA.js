@@ -2,38 +2,39 @@ import React, {Fragment} from 'react'
 import {Grid, Typography} from '@material-ui/core'
 import {animated} from 'react-spring'
 import background from '../assets/background.mp4'
-import logo from '../assets/logo.svg'
-import useBackgroundStyle from '../styles/useBackgroundStyle'
+import logo from '../assets/icons/devin.svg'
+import useSectionAStyle from '../styles/useSectionAStyle'
 import useHeroText from '../animations/useHeroText'
 import useLogo from '../animations/useLogo'
+import GoDown from './GoDown'
 
 export default function SectionA() {
-	const heroText = 'This Is My Personal Web'.split(' ')
-	const backgroundStyle = useBackgroundStyle()
+	const heroText = 'build future with mere effort'.toUpperCase().split(' ')
+	const sectionAStyle = useSectionAStyle()
 
 	const {o, xyz} = useLogo()
 	const heroTextTrail = useHeroText(heroText)
 	return (
 		<Fragment>
-			<video autoPlay='autoplay' muted loop id="myVideo" className={backgroundStyle.root}>
+			<video autoPlay='autoplay' muted loop id="myVideo" className={sectionAStyle.root}>
 				<source src={background} type="video/mp4"/>
 			</video>
 			<Grid
 				container
-				className={backgroundStyle.middleWrapper}>
+				className={sectionAStyle.middleWrapper}>
 
-				<animated.img src={logo} alt='logo' className={backgroundStyle.heroLogo}
+				<animated.img src={logo} alt='logo' className={sectionAStyle.heroLogo}
 							  style={{
 								  opacity: o.interpolate((o) => `${o}`),
 								  transform: xyz.interpolate((x, y, z) => `translate3d(${x}px,${y}px,${z}px)`),
 							  }}/>
 
-				<Typography component='h1' className={backgroundStyle.heroText}>
+				<Typography component='h1' className={sectionAStyle.heroText}>
 					{heroTextTrail.map(({o, xyz, height}, currentIndex) => (
 						<animated.span key={currentIndex}
 									   style={{
 										   display: 'inline-block',
-										   marginRight: '5px',
+										   marginRight: '7px',
 										   height,
 										   opacity: o.interpolate((o) => `${o}`),
 										   transform: xyz.interpolate((x, y, z) => `translate3d(${x}px,${y}px,${z}px)`),

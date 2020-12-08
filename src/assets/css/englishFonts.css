@@ -22,3 +22,26 @@
     font-weight: normal;
     src: url('../fonts/ttf/AlegreyaSansSC-Regular.ttf');
 }
+
+/*Manrope font*/
+
+@font-face {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/ttf/Manrope-Regular.ttf');
+}
+
+@font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/ttf/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: MontserratAlternates;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/ttf/MontserratAlternates-Regular.ttf');
+}

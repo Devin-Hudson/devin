@@ -5,17 +5,19 @@ import {jssPreset, StylesProvider, ThemeProvider} from '@material-ui/core/styles
 import {create} from 'jss'
 import rtl from 'jss-rtl'
 import theme from './assets/theme'
-
 const jss = create({plugins: [...jssPreset().plugins, rtl()]})
 
 function App() {
+
 	if (localStorage.getItem('currentLang') === 'en') {
 		return (
-			<ThemeProvider theme={theme}>
-				<CssBaseline/>
-				<Home/>
-			</ThemeProvider>
-		);
+
+					<ThemeProvider theme={theme}>
+						<CssBaseline/>
+						<Home/>
+					</ThemeProvider>
+
+		)
 	} else {
 		return (
 			<ThemeProvider theme={theme}>
@@ -24,7 +26,7 @@ function App() {
 					<Home/>
 				</StylesProvider>
 			</ThemeProvider>
-		);
+		)
 	}
 
 }
